@@ -1,15 +1,20 @@
 import './App.css';
-import Header from './Components/Header';
-import Nav from './Components/Nav';
-import Main from './Components/Main';
+import './styles.css';
+import Navbar from './Components/Navbar';
+import HeroSection from './Components/HeroSection';
+import Specials from './Components/Specials';
+import Testimonials from './Components/Testimonials';
+import BookTable from './Components/BookTable';
 import Footer from './Components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Nav/>
-      <Main/>
+    <div className="container">
+      <Navbar/>
+      <HeroSection/>
+      <Specials/>
+      <Testimonials/>
+      <BookTable/>
       <Footer/>
     </div>
   );
