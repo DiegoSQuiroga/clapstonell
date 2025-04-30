@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/images/Logo.svg';
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsOpen(!isOpen);
+    };
+
   return (
     <nav className="navbar">
       <img src={logo} alt="Little Lemon Logo" className="logo" />
-      <ul className="nav-links">
+      <div className="hamburger" onClick={toggleMenu}>
+        <span className="bar" />
+        <span className="bar" />
+        <span className="bar" />
+      </div>
+      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About us</a></li>
         <li><a href="#menu">Menu</a></li>
@@ -15,6 +26,6 @@ const Navbar = () => {
       </ul>
     </nav>
   );
-};
 
+};
 export default Navbar;

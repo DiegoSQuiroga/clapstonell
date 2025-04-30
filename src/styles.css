@@ -1,0 +1,113 @@
+/* Fuente principal */
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@300;500;700&display=swap');
+
+/* Estilo general */
+body {
+  margin: 10px;
+  padding: 0;
+  font-family: 'Markazi Text', serif;
+  font-weight: 500;
+  background-color: #f4f4f4;
+  color: black;
+  line-height: 1.5;
+}
+
+/* Contenedor centralizado con márgenes laterales */
+.container {
+  max-width: 95vw;
+  margin: 0 auto;
+  padding: 2rem; /* Márgenes internos en pantallas grandes */
+  border: 1px solid #ccc; /* Borde gris claro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+}
+/* NAVBAR */
+.navbar {
+    display: flex; /* Usa flexbox para organización horizontal */
+    align-items: center; /* Alinea verticalmente el contenido (logo y menú) en el centro */
+    justify-content: space-between; /* Separa el logo de los enlaces de navegación */
+    padding: 2rem; /* Espaciado superior e inferior, además de márgenes laterales */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+    background-color: #ccc;
+  }
+
+  /* LOGO */
+  .logo {
+    max-width: 90vw; /* Tamaño del logo */
+    height: auto; /* Asegura que el logo mantenga la proporción */
+  }
+
+  /* MENÚ DE NAVEGACIÓN */
+  .nav-links {
+    display: flex; /* Coloca los elementos del menú en línea (horizontalmente) */
+    gap: 2rem; /* Espacio entre los elementos del menú */
+    list-style: none; /* Elimina los puntos de lista */
+    margin: 0; /* Elimina márgenes adicionales */
+    padding: 0; /* Elimina el padding por defecto */
+  }
+
+  /* ESTILO DE CADA ELEMENTO DEL MENÚ */
+  .nav-links a{
+    font-size: 1.2rem; /* Tamaño de fuente */
+    cursor: pointer; /* Hace que el puntero cambie al pasar sobre los enlaces */
+    color: black; /* Color negro por defecto */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+    text-decoration: none;
+  }
+
+  /* EFECTO DE HOVER: Subrayado */
+  .nav-links a:hover {
+    font-size: 1.5rem;
+    color: #495e57; /* Color gris oscuro cuando pasa el mouse */
+    text-decoration: underline; /* Subraya el texto cuando se hace hover */
+  }
+
+  /* Botón hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    transition: 0.3s ease;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 80px; /* Ajustar según el alto de tu navbar */
+      right: 0;
+      background-color: #ccc;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      display: none;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+    }
+  }
