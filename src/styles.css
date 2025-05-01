@@ -111,3 +111,98 @@ body {
       text-align: center;
     }
   }
+
+.hero {
+  display: flex; /* Usa Flexbox para alinear texto e imagen en fila */
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: space-around; /* Deja espacio entre texto e imagen */
+  background-color: #495e57; /* Fondo oscuro del contenedor */
+  color: #ffffff; /* Texto blanco por defecto */
+  padding: 1rem 1rem; /* Espaciado interior: 4rem arriba/abajo, 2rem lados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave debajo */
+  position: relative; /* Permite posicionar elementos hijos (como la imagen) con respecto a este */
+  overflow: visible; /* Permite que la imagen sobresalga del contenedor */
+  gap: 2rem; /* Espacio entre texto e imagen */
+  flex-wrap: nowrap;
+  /* 👉 Podés ajustar padding si querés que ocupe menos espacio vertical */
+}
+
+  .hero-text {
+    flex: 1;
+    max-width: 50%; /* Ocupa la mitad izquierda del contenedor */
+    /* 👉 Podés usar width: 60% si querés más espacio para texto */
+  }
+
+  .hero-text h1 {
+    font-size: 3rem; /* Título grande */
+    color: #F4CE14; /* Amarillo destacado */
+    margin-bottom: 0.5rem; /* Espaciado inferior */
+    /* 👉 Cambiá font-size a 2.5rem si lo ves demasiado grande */
+  }
+
+  .hero-text h2 {
+    font-size: 2rem; /* Subtítulo */
+    margin-bottom: 1rem;
+    /* 👉 Podés cambiar a 1.5rem para hacerlo más sutil */
+  }
+
+  .hero-text p {
+    font-size: 1rem; /* Texto base */
+    line-height: 1.6; /* Altura de línea para mejorar legibilidad */
+    /* 👉 Podés usar font-size: 1.125rem para hacerlo más grande */
+  }
+
+  .hero-text button {
+    margin-top: 1.5rem; /* Espacio arriba del botón */
+    padding: 0.75rem 1.5rem; /* Espaciado interno del botón */
+    font-size: 1rem;
+    background-color: #F4CE14; /* Fondo amarillo del botón */
+    color: #495e57; /* Texto del botón en color oscuro */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer;
+    font-weight: bold;
+    /* 👉 Podés agregar hover styles para interactividad */
+  }
+  .hero-text button:hover {
+    background-color: #e6bc10; /* Oscurece el amarillo al pasar el mouse */
+    transform: scale(1.05); /* Efecto leve de agrandado */
+  }
+
+  .hero-image {
+    max-width: 250px;
+    position: relative;
+    top: 50px; /* Desplaza la imagen hacia abajo para que sobresalga */
+    margin-left: -140px;
+    /* 👉 Ajustá este valor según cuánto querés que sobresalga */
+  }
+
+  .hero-image img {
+    width: 100%; /* Imagen ocupa todo el ancho disponible */
+    border-radius: 16px; /* Bordes redondeados en la imagen */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
+    /* 👉 Podés hacer border-radius más suave o más agresivo (por ej. 8px o 24px) */
+  }
+
+  @media (max-width: 600px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+
+    .hero-text h2 {
+      font-size: 1.25rem;
+    }
+
+    .hero-text p {
+      font-size: 0.95rem;
+    }
+
+    .hero-text button {
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    .hero-image {
+      top: 10px;
+    }
+  }
