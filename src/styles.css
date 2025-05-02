@@ -27,6 +27,11 @@ body {
       padding: 0 1rem;
     }
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 /* NAVBAR */
 .navbar {
     display: flex; /* Usa flexbox para organización horizontal */
@@ -63,7 +68,6 @@ body {
 
   /* EFECTO DE HOVER: Subrayado */
   .nav-links a:hover {
-    font-size: 1.5rem;
     color: #495e57; /* Color gris oscuro cuando pasa el mouse */
     text-decoration: underline; /* Subraya el texto cuando se hace hover */
   }
@@ -85,6 +89,10 @@ body {
 
   /* Responsive */
   @media (max-width: 768px) {
+    .navbar {
+      position: relative;
+      z-index: 10;
+    }
     .nav-links {
       position: absolute;
       top: 80px; /* Ajustar según el alto de tu navbar */
@@ -96,6 +104,7 @@ body {
       gap: 1.5rem;
       padding: 1rem 0;
       display: none;
+      z-index: 20;
     }
 
     .nav-links.active {
@@ -130,6 +139,9 @@ body {
   .hero-text {
     flex: 1;
     max-width: 50%; /* Ocupa la mitad izquierda del contenedor */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
     /* 👉 Podés usar width: 60% si querés más espacio para texto */
   }
 
@@ -183,26 +195,359 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
     /* 👉 Podés hacer border-radius más suave o más agresivo (por ej. 8px o 24px) */
   }
-
-  @media (max-width: 600px) {
-    .hero-text h1 {
-      font-size: 2rem;
-    }
-
-    .hero-text h2 {
-      font-size: 1.25rem;
-    }
-
-    .hero-text p {
-      font-size: 0.95rem;
-    }
-
-    .hero-text button {
-      font-size: 0.95rem;
-      padding: 0.6rem 1.2rem;
-    }
-
-    .hero-image {
-      top: 10px;
-    }
+@media (max-width: 768px) {
+  .hero {
+      flex-direction: column; /* Cambia de fila a columna */
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
   }
+
+  .hero-text {
+      max-width: 100%;
+  }
+
+  .hero-image {
+      max-width: 70%;
+      margin: 1rem 0 0 0; /* Quita margen negativo */
+      top: 0; /* Evita que se desplace hacia abajo */
+      margin-left: 0;
+  }
+}
+
+.specials {
+  padding: 2rem;
+  background-color: #f4ce14;
+  font-family: 'Markazi Text', serif;
+}
+
+.specials-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.specials-header h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.specials-header button {
+  background-color: #495e57;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.specials-header button:hover {
+  background-color: #3b4a45;
+  transform: scale(1.05);
+}
+
+.specials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .specials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card styles */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-content span {
+  color: #ee9972;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.card-content p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.card-content button {
+  background-color: #495e57;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.card-content button:hover {
+  background-color: #3b4a45;
+}
+
+.testimonials {
+  background: linear-gradient(160deg,#F4CE14 50%, #ffffff 50%);
+  padding: 4rem 1rem;
+  font-family: 'Markazi Text', serif;
+  color: #495e57;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h4 {
+  font-size: 1.4rem;
+  color: #F4CE14;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .testimonial-card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .testimonials-section h2 {
+    font-size: 2rem;
+  }
+}
+.book-table {
+  font-family: 'Markazi Text', serif;
+  background-color: #fff;
+  color: #495e57;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.book-table h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #495e57;
+  position: relative;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.book-table form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInUp 0.8s ease-in;
+}
+
+.book-table input {
+  padding: 1rem;
+  padding-left: 3rem;
+  font-size: 1.2rem;
+  border: 2px solid #495e57;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  color: #495e57;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.book-table input:focus {
+  outline: none;
+  border-color: #F4CE14;
+  box-shadow: 0 0 5px #F4CE14aa;
+}
+
+/* Icon containers */
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper svg {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #F4CE14;
+  font-size: 1.4rem;
+}
+
+.book-table button {
+  background-color: #F4CE14;
+  color: #495e57;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-table button:hover {
+  background-color: #e3be10;
+  transform: scale(1.03);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .book-table h2 {
+    font-size: 2.4rem;
+  }
+
+  .book-table input,
+  .book-table button {
+    font-size: 1rem;
+  }
+}
+
+.footer {
+  background-color: #495e57;
+  color: #ffffff;
+  font-family: 'Markazi Text', serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #F4CE14;
+}
+
+.footer-column ul,
+.footer-column p {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0;
+  font-size: 1.2rem;
+}
+
+.footer-column li {
+  margin: 0.3rem 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-column li:hover {
+  color: #F4CE14;
+}
+
+.footer img {
+  width: 150px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  margin-bottom: 1rem;
+  margin-left: 65px;
+  margin-top: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-column {
+    max-width: 100%;
+  }
+}

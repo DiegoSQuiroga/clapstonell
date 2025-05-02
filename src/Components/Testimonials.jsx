@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from 'react-slick';
 import TestimonialsCard from './TestimonialsCard';
 
 const Testimonials = () => {
@@ -8,14 +9,25 @@ const Testimonials = () => {
     { name: 'Mike', rating: 5, comment: 'Great service!' },
   ];
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   return (
     <section className="testimonials">
       <h2>Testimonials</h2>
-      <div className="testimonials-grid">
+      <Slider {...settings}>
         {testimonials.map((t, index) => (
           <TestimonialsCard key={index} {...t} />
         ))}
-      </div>
+      </Slider>
     </section>
   );
 };

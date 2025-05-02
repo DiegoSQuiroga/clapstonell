@@ -1,10 +1,11 @@
 import React from 'react';
+import footer from '../assets/images/restaurant chef B.jpg';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-column">
-        <img src="/footer-logo.png" alt="Little Lemon" />
+        <img src={footer} alt="Little Lemon" />
       </div>
       <div className="footer-column">
         <h4>Doormat Navigation</h4>
