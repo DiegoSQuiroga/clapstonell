@@ -4,7 +4,6 @@
 /* Estilo general */
 body {
   margin: 10px;
-  padding: 0;
   font-family: 'Markazi Text', serif;
   font-weight: 500;
   background-color: #f4f4f4;
@@ -14,9 +13,6 @@ body {
 
 /* Contenedor centralizado con márgenes laterales */
 .container {
-  max-width: 95vw;
-  margin: 0 auto;
-  padding: 2rem; /* Márgenes internos en pantallas grandes */
   border: 1px solid #ccc; /* Borde gris claro */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -39,13 +35,15 @@ body {
     justify-content: space-between; /* Separa el logo de los enlaces de navegación */
     padding: 2rem; /* Espaciado superior e inferior, además de márgenes laterales */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra sutil */
-    background-color: #ccc;
+    background-color: #495e57;
   }
 
   /* LOGO */
   .logo {
-    max-width: 90vw; /* Tamaño del logo */
-    height: auto; /* Asegura que el logo mantenga la proporción */
+    max-width: 200px;       /* Tamaño máximo controlado */
+    width: 100%;            /* Se adapta al contenedor */
+    height: auto;           /* Mantiene proporciones */
+    display: block;
   }
 
   /* MENÚ DE NAVEGACIÓN */
@@ -61,14 +59,14 @@ body {
   .nav-links a{
     font-size: 1.2rem; /* Tamaño de fuente */
     cursor: pointer; /* Hace que el puntero cambie al pasar sobre los enlaces */
-    color: black; /* Color negro por defecto */
+    color: whitesmoke; /* Color negro por defecto */
     transition: all 0.3s ease; /* Transición suave para efectos */
     text-decoration: none;
   }
 
   /* EFECTO DE HOVER: Subrayado */
   .nav-links a:hover {
-    color: #495e57; /* Color gris oscuro cuando pasa el mouse */
+    color: #F4CE14; /* Color gris oscuro cuando pasa el mouse */
     text-decoration: underline; /* Subraya el texto cuando se hace hover */
   }
 
@@ -127,12 +125,12 @@ body {
   justify-content: space-around; /* Deja espacio entre texto e imagen */
   background-color: #495e57; /* Fondo oscuro del contenedor */
   color: #ffffff; /* Texto blanco por defecto */
-  padding: 1rem 1rem; /* Espaciado interior: 4rem arriba/abajo, 2rem lados */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave debajo */
   position: relative; /* Permite posicionar elementos hijos (como la imagen) con respecto a este */
   overflow: visible; /* Permite que la imagen sobresalga del contenedor */
-  gap: 2rem; /* Espacio entre texto e imagen */
+  gap: 2.3rem; /* Espacio entre texto e imagen */
   flex-wrap: nowrap;
+  padding-bottom: 2rem;
+  font-family: 'Markazi Text', serif;
   /* 👉 Podés ajustar padding si querés que ocupe menos espacio vertical */
 }
 
@@ -159,8 +157,9 @@ body {
   }
 
   .hero-text p {
-    font-size: 1rem; /* Texto base */
-    line-height: 1.6; /* Altura de línea para mejorar legibilidad */
+    font-size: 1.2rem; /* Texto base */
+    line-height: 1; /* Altura de línea para mejorar legibilidad */
+    text-align: justify;
     /* 👉 Podés usar font-size: 1.125rem para hacerlo más grande */
   }
 
@@ -185,7 +184,7 @@ body {
     max-width: 250px;
     position: relative;
     top: 50px; /* Desplaza la imagen hacia abajo para que sobresalga */
-    margin-left: -140px;
+    margin-left: -200px;
     /* 👉 Ajustá este valor según cuánto querés que sobresalga */
   }
 
@@ -193,6 +192,7 @@ body {
     width: 100%; /* Imagen ocupa todo el ancho disponible */
     border-radius: 16px; /* Bordes redondeados en la imagen */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
+    margin-left: -50px;
     /* 👉 Podés hacer border-radius más suave o más agresivo (por ej. 8px o 24px) */
   }
 @media (max-width: 768px) {
@@ -225,8 +225,7 @@ body {
 
 .specials-header {
   display: flex;
-  justify-content: flex-start;
-  gap: 30rem;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
   flex-wrap: wrap;

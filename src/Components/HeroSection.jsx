@@ -7,7 +7,7 @@ const HeroSection = () => {
       <div className="hero-text">
         <h1>Little Lemon</h1>
         <h2>Chicago</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. putoelque lee iwgiawehgiWEBGIwbegiubWEEIGweeifWIEEUFHUWIEFHWIEGHWEIHQWOFHohwoeghgoqhqowihfqoiwfhqo</p>
+        <p>Your Mediterranean escape in the heart of Chicago. Located just steps from the city's vibrant downtown, our restaurant brings the rich flavors of the Mediterranean coast to your table. From Greek moussaka and Spanish tapas to Lebanese hummus and Italian seafood pasta, we offer a diverse menu that celebrates the best of Mediterranean cuisine.</p>
         <button>Reserve a Table</button>
       </div>
       <div className="hero-image">

@@ -12,7 +12,7 @@ const Specials = () => {
   ];
 
   return (
-    <section className="specials">
+    <section className="specials" id="menu">
       <div className="specials-header">
         <h2>Specials</h2>
         <button>Online Menu</button>

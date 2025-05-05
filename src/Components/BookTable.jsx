@@ -14,7 +14,7 @@ const BookTable = () => {
   };
 
   return (
-    <section className="book-table">
+    <section className="book-table" id="book-table">
       <h2>Book a Table</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="input-group">
