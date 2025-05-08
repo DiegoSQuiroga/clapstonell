@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar';
 import HeroSection from './Components/HeroSection';
 import Specials from './Components/Specials';
 import Testimonials from './Components/Testimonials';
-import BookTable from './Components/BookTable';
+import Calendar from './Components/Calendar';
 import Footer from './Components/Footer';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,7 +16,7 @@ function App() {
       <HeroSection/>
       <Specials/>
       <Testimonials/>
-      <BookTable/>
+      <Calendar/>
       <Footer/>
     </div>
   );

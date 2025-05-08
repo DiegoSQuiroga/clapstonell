@@ -389,7 +389,6 @@ body {
   font-size: 3rem;
   margin-bottom: 2rem;
   color: #495e57;
-  position: relative;
   animation: fadeInDown 0.6s ease-out;
 }
 
@@ -402,36 +401,37 @@ body {
   animation: fadeInUp 0.8s ease-in;
 }
 
-.book-table input {
-  padding: 1rem;
-  padding-left: 3rem;
+.book-table input,
+.book-table select {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
   font-size: 1.2rem;
   border: 2px solid #495e57;
   border-radius: 12px;
   background-color: #fdfdfd;
   color: #495e57;
   transition: all 0.3s ease;
-  position: relative;
 }
 
-.book-table input:focus {
+.book-table input:focus,
+.book-table select:focus {
   outline: none;
   border-color: #F4CE14;
   box-shadow: 0 0 5px #F4CE14aa;
 }
 
-/* Icon containers */
-.input-wrapper {
+.input-icon {
   position: relative;
 }
 
-.input-wrapper svg {
+.input-icon svg {
   position: absolute;
   top: 50%;
   left: 1rem;
   transform: translateY(-50%);
   color: #F4CE14;
   font-size: 1.4rem;
+  pointer-events: none;
 }
 
 .book-table button {
@@ -451,7 +451,6 @@ body {
   transform: scale(1.03);
 }
 
-/* Animaciones */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -474,17 +473,18 @@ body {
   }
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .book-table h2 {
     font-size: 2.4rem;
   }
 
   .book-table input,
+  .book-table select,
   .book-table button {
     font-size: 1rem;
   }
 }
+
 
 .footer {
   background-color: #495e57;
