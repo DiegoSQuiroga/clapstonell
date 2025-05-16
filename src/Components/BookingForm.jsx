@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaUser, FaEnvelope, FaCalendarAlt, FaClock, FaUsers } from 'react-icons/fa';
 
 const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
@@ -15,7 +15,7 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
     setFormData(prev => ({ ...prev, [name]: name === 'guests' ? Number(value) : value }));/*todo esto en vez de [name]:value porque stengo que validar si es un numero en vez de un string cuando name es guests*/
 
     if (name === 'email') {
-      setErrors(prev => ({ ...prev, email: validateEmail(value) ? null : 'Email inválido'}));
+      setErrors(prev => ({ ...prev, email: validateEmail(value) ? null : 'Wrong format'}));
     }
 
     if (name === 'date') {
@@ -48,9 +48,10 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="reservation">
 
       {/* Name*/}
+      <div className="bookatable">Reservations</div>
       <div className="input-group">
         <label>Full Name</label>
         <div>
@@ -99,7 +100,7 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
         </div>
       </div>
 
-      {/* time (only available with time) */}
+      {/* time (only available with selected date) */}
       <div className="input-group">
         <label>Time</label>
         <div>
@@ -121,7 +122,7 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
       </div>
       {/* Guests */}
       <div className="input-group">
-        <label htmlFor="guests">Cantidad de invitados</label>
+        <label htmlFor="guests">Number of guest</label>
         <div>
           <FaUsers />
           <input
@@ -138,7 +139,7 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
         </div>
       </div>
 
-      <button type="submit">Reservar</button>
+      <button type="submit">Make your reservation</button>
     </form>
   );
 };

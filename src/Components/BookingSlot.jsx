@@ -1,9 +1,9 @@
 const BookingSlot = ({ availableTimes }) => {
   return (
     <div className="booking-slots">
-      <h3>Horarios Disponibles</h3>
+      <h3>available time</h3>
       {availableTimes.length === 0 ? (
-        <p>No hay horarios disponibles</p>
+        <p>No available times</p>
       ) : (
         <ul>
           {availableTimes.map((time, index) => (

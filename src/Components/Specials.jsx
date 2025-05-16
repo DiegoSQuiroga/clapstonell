@@ -1,4 +1,3 @@
-import React from 'react';
 import SpecialsCard from './SpecialsCard';
 import salad from '../assets/images/greek salad.jpg';
 import bruschetta from '../assets/images/bruchetta.svg';

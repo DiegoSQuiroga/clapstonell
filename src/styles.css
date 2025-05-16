@@ -1,6 +1,25 @@
 /* Fuente principal */
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@300;500;700&display=swap');
 
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  /* Colores principales */
+  --primary-green: #495e57;
+  --primary-yellow: #F4CE14;
+  --light-text: #EDEFEE;
+  --dark-text: #333333;
+  --highlight: #F4CE14; /* Para el fondo del link activo */
+  
+  /* Espaciados */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
 /* Estilo general */
 body {
   margin: 10px;
@@ -11,9 +30,9 @@ body {
   line-height: 1.5;
 }
 
-/* Contenedor centralizado con márgenes laterales */
+/* Contenedor centralizado */
 .container {
-  border: 1px solid #ccc; /* Borde gris claro */
+  border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,203 +42,236 @@ body {
       padding: 0 1rem;
     }
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-/* NAVBAR */
+
+/* ===== NAVBAR ===== */
 .navbar {
-    display: flex; /* Usa flexbox para organización horizontal */
-    align-items: center; /* Alinea verticalmente el contenido (logo y menú) en el centro */
-    justify-content: space-between; /* Separa el logo de los enlaces de navegación */
-    padding: 2rem; /* Espaciado superior e inferior, además de márgenes laterales */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra sutil */
-    background-color: #495e57;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--primary-green);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  /* LOGO */
-  .logo {
-    max-width: 200px;       /* Tamaño máximo controlado */
-    width: 100%;            /* Se adapta al contenedor */
-    height: auto;           /* Mantiene proporciones */
-    display: block;
-  }
+/* Logo */
+.logo {
+  max-width: 200px;
+  height: auto;
+  transition: var(--transition-normal);
+}
 
-  /* MENÚ DE NAVEGACIÓN */
-  .nav-links {
-    display: flex; /* Coloca los elementos del menú en línea (horizontalmente) */
-    gap: 2rem; /* Espacio entre los elementos del menú */
-    list-style: none; /* Elimina los puntos de lista */
-    margin: 0; /* Elimina márgenes adicionales */
-    padding: 0; /* Elimina el padding por defecto */
-  }
+.logo:hover {
+  opacity: 0.9;
+}
 
-  /* ESTILO DE CADA ELEMENTO DEL MENÚ */
-  .nav-links a{
-    font-size: 1.2rem; /* Tamaño de fuente */
-    cursor: pointer; /* Hace que el puntero cambie al pasar sobre los enlaces */
-    color: whitesmoke; /* Color negro por defecto */
-    transition: all 0.3s ease; /* Transición suave para efectos */
-    text-decoration: none;
-  }
+/* Menú Desktop */
+.nav-links {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
 
-  /* EFECTO DE HOVER: Subrayado */
-  .nav-links a:hover {
-    color: #F4CE14; /* Color gris oscuro cuando pasa el mouse */
-    text-decoration: underline; /* Subraya el texto cuando se hace hover */
-  }
+.nav-links a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1.1rem;
+  border-radius: 0px;
+  transition: var(--transition-normal);
+}
 
-  /* Botón hamburguesa */
+/* Estados de los links */
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: var(--primary-yellow);
+  color: var(--dark-text);
+}
+
+.nav-links a.active {
+  background-color: var(--highlight);
+  color: var(--light-text);
+}
+
+/* Hamburguesa */
 .hamburger {
-    display: none;
+  display: none;
+  cursor: pointer;
+  background: var(--primary-yellow);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+  transition: var(--transition-normal);
+}
+
+.hamburger:hover {
+  opacity: 0.8;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: var(--dark-text);
+  transition: var(--transition-normal);
+}
+
+/* Animación de "X" */
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú móvil */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--primary-green);
     flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg) 0;
+    clip-path: circle(0% at 90% -10%);
+    transition: clip-path 0.4s ease;
   }
 
-  .bar {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    transition: 0.3s ease;
+  .nav-links.active {
+    clip-path: circle(150% at 90% -10%);
   }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .navbar {
-      position: relative;
-      z-index: 10;
-    }
-    .nav-links {
-      position: absolute;
-      top: 80px; /* Ajustar según el alto de tu navbar */
-      right: 0;
-      background-color: #ccc;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      gap: 1.5rem;
-      padding: 1rem 0;
-      display: none;
-      z-index: 20;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .hamburger {
-      display: flex;
-    }
-
-    .nav-links li {
-      width: 100%;
-      text-align: center;
-    }
+  .nav-links a {
+    width: 80%;
+    text-align: center;
+    padding: var(--space-md);
   }
+}
 
+/* ===== HERO ===== */
 .hero {
   display: flex; /* Usa Flexbox para alinear texto e imagen en fila */
   align-items: center; /* Centra verticalmente el contenido */
   justify-content: space-around; /* Deja espacio entre texto e imagen */
-  background-color: #495e57; /* Fondo oscuro del contenedor */
-  color: #ffffff; /* Texto blanco por defecto */
+  background-color: var(--primary-green); /* Fondo oscuro del contenedor */
+  color: var(--light-text); /* Texto blanco por defecto */
   position: relative; /* Permite posicionar elementos hijos (como la imagen) con respecto a este */
   overflow: visible; /* Permite que la imagen sobresalga del contenedor */
-  gap: 2.3rem; /* Espacio entre texto e imagen */
+  gap: var(--space-lg); /* Espacio entre texto e imagen */
   flex-wrap: nowrap;
-  padding-bottom: 2rem;
+  padding-bottom: var(--space-md); /* Ajustamos el padding en la parte inferior */
   font-family: 'Markazi Text', serif;
-  /* 👉 Podés ajustar padding si querés que ocupe menos espacio vertical */
+  /* Podés ajustar padding si querés que ocupe menos espacio vertical */
 }
 
-  .hero-text {
-    flex: 1;
-    max-width: 50%; /* Ocupa la mitad izquierda del contenedor */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    /* 👉 Podés usar width: 60% si querés más espacio para texto */
-  }
+.hero-text {
+  flex: 1;
+  max-width: 50%; /* Ocupa la mitad izquierda del contenedor */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  /* Se mantiene el tamaño del texto controlado por las variables globales */
+}
 
-  .hero-text h1 {
-    font-size: 3rem; /* Título grande */
-    color: #F4CE14; /* Amarillo destacado */
-    margin-bottom: 0.5rem; /* Espaciado inferior */
-    /* 👉 Cambiá font-size a 2.5rem si lo ves demasiado grande */
-  }
+.hero-text h1 {
+  font-size: 3rem; /* Título grande */
+  color: var(--primary-yellow); /* Amarillo destacado */
+  margin-bottom: var(--space-sm); /* Espaciado inferior */
+  /* Cambié el tamaño del título a 3rem */
+}
 
-  .hero-text h2 {
-    font-size: 2rem; /* Subtítulo */
-    margin-bottom: 1rem;
-    /* 👉 Podés cambiar a 1.5rem para hacerlo más sutil */
-  }
+.hero-text h2 {
+  font-size: 2rem; /* Subtítulo */
+  margin-bottom: var(--space-md); /* Un poco más de espacio debajo */
+}
 
-  .hero-text p {
-    font-size: 1.2rem; /* Texto base */
-    line-height: 1; /* Altura de línea para mejorar legibilidad */
-    text-align: justify;
-    /* 👉 Podés usar font-size: 1.125rem para hacerlo más grande */
-  }
+.hero-text p {
+  font-size: 1.2rem; /* Texto base */
+  line-height: 1.6; /* Altura de línea para mejorar legibilidad */
+  text-align: justify;
+}
 
-  .hero-text button {
-    margin-top: 1.5rem; /* Espacio arriba del botón */
-    padding: 0.75rem 1.5rem; /* Espaciado interno del botón */
-    font-size: 1rem;
-    background-color: #F4CE14; /* Fondo amarillo del botón */
-    color: #495e57; /* Texto del botón en color oscuro */
-    border: none;
-    border-radius: 8px; /* Bordes redondeados */
-    cursor: pointer;
-    font-weight: bold;
-    /* 👉 Podés agregar hover styles para interactividad */
-  }
-  .hero-text button:hover {
-    background-color: #e6bc10; /* Oscurece el amarillo al pasar el mouse */
-    transform: scale(1.05); /* Efecto leve de agrandado */
-  }
+.hero-text button {
+  margin-top: var(--space-lg); /* Espacio arriba del botón */
+  padding: var(--space-sm) var(--space-lg); /* Espaciado interno del botón */
+  font-size: 1rem;
+  background-color: var(--primary-yellow); /* Fondo amarillo del botón */
+  color: var(--primary-green); /* Texto del botón en color oscuro */
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition-normal);
+  /* Agregué un poco de interactividad */
+}
 
-  .hero-image {
-    max-width: 250px;
-    position: relative;
-    top: 50px; /* Desplaza la imagen hacia abajo para que sobresalga */
-    margin-left: -200px;
-    /* 👉 Ajustá este valor según cuánto querés que sobresalga */
-  }
+.hero-text button:hover {
+  background-color: #e6bc10; /* Oscurece el amarillo al pasar el mouse */
+  transform: scale(1.05); /* Efecto leve de agrandado */
+}
 
-  .hero-image img {
-    width: 100%; /* Imagen ocupa todo el ancho disponible */
-    border-radius: 16px; /* Bordes redondeados en la imagen */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
-    margin-left: -50px;
-    /* 👉 Podés hacer border-radius más suave o más agresivo (por ej. 8px o 24px) */
-  }
+.hero-image {
+  max-width: 250px;
+  position: relative;
+  top: 50px; /* Desplaza la imagen hacia abajo para que sobresalga */
+  margin-left: -200px;
+  /* Ajusté margen negativo para que sobresalga */
+}
+
+.hero-image img {
+  width: 100%; /* Imagen ocupa todo el ancho disponible */
+  border-radius: 16px; /* Bordes redondeados en la imagen */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
+  margin-left: -50px;
+}
+
 @media (max-width: 768px) {
   .hero {
-      flex-direction: column; /* Cambia de fila a columna */
-      align-items: center;
-      text-align: center;
-      padding: 2rem 1rem;
-      position: relative;
-      z-index: 1;
+    flex-direction: column; /* Cambia de fila a columna */
+    align-items: center;
+    text-align: center;
+    padding: var(--space-lg) var(--space-sm); /* Añadí padding con las variables globales */
+    position: relative;
+    z-index: 1;
   }
 
   .hero-text {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .hero-image {
-      max-width: 70%;
-      margin: 1rem 0 0 0; /* Quita margen negativo */
-      top: 0; /* Evita que se desplace hacia abajo */
-      margin-left: 0;
+    max-width: 70%;
+    margin: var(--space-md) 0 0 0; /* Quita margen negativo y da más espacio */
+    top: 0; /* Evita que se desplace hacia abajo */
+    margin-left: 0;
   }
 }
-
+/* ===== SPECIALS ===== */
 .specials {
-  padding: 2rem;
-  background-color: #f4ce14;
+  padding: var(--space-lg);
+  background-color: var(--primary-yellow);
   font-family: 'Markazi Text', serif;
 }
 
@@ -227,18 +279,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-lg);
   flex-wrap: wrap;
 }
 
 .specials-header h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: var(--dark-text);
   margin: 0;
 }
 
 .specials-header button {
-  background-color: #495e57;
+  background-color: var(--primary-green);
   color: #fff;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -246,7 +298,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-normal);
 }
 
 .specials-header button:hover {
@@ -257,7 +309,7 @@ body {
 .specials-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: var(--space-lg);
 }
 
 @media (min-width: 768px) {
@@ -275,7 +327,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 
 .card:hover {
@@ -289,7 +341,7 @@ body {
 }
 
 .card-content {
-  padding: 1rem;
+  padding: var(--space-sm);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -301,7 +353,7 @@ body {
   align-items: center;
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--dark-text);
 }
 
 .card-content span {
@@ -312,13 +364,13 @@ body {
 
 .card-content p {
   flex-grow: 1;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm);
   color: #555;
   font-size: 1rem;
 }
 
 .card-content button {
-  background-color: #495e57;
+  background-color: var(--primary-green);
   color: white;
   border: none;
   padding: 0.6rem;
@@ -326,131 +378,206 @@ body {
   cursor: pointer;
   font-weight: bold;
   font-size: 0.95rem;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-normal);
 }
 
 .card-content button:hover {
   background-color: #3b4a45;
 }
 
+/* ===== TESTIMONIALS ===== */
 .testimonials {
-  background: linear-gradient(160deg,#F4CE14 50%, #ffffff 50%);
-  padding: 4rem 1rem;
+  background: linear-gradient(
+    170deg,
+    var(--primary-yellow) 50%,
+    #ffffff 50%
+  );
+  padding: var(--space-lg) var(--space-md);
   font-family: 'Markazi Text', serif;
-  color: #495e57;
+  color: var(--primary-green);
   text-align: center;
 }
 
 .testimonials h2 {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-lg);
 }
 
+/* Slider dívisor: ajusta el contenedor interno si usas react-slick */
+.testimonials .slick-slider {
+  padding: 0 var(--space-md);
+}
+
+/* Card */
 .testimonial-card {
-  background: white;
-  padding: 2rem;
+  background: #ffffff;
+  padding: var(--space-lg);
   border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.614);
   max-width: 500px;
   margin: 0 auto;
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition-normal);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
 }
 
 .testimonial-card p {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+  color: var(--dark-text);
 }
 
 .testimonial-card h4 {
   font-size: 1.4rem;
-  color: #F4CE14;
+  color: var(--primary-yellow);
+  margin-top: var(--space-sm);
 }
 
-/* Responsive for mobile */
+/* Responsive */
 @media (max-width: 768px) {
   .testimonial-card {
     max-width: 90%;
-    padding: 1.5rem;
+    padding: var(--space-md);
   }
 
-  .testimonials-section h2 {
+  .testimonials h2 {
     font-size: 2rem;
   }
 }
-.book-table {
+/* === ESTILOS GLOBALES DE CALENDARIO, FORMULARIO Y TURNOS === */
+
+/* --- Calendar container --- */
+.Calendar {
   font-family: 'Markazi Text', serif;
   background-color: #fff;
-  color: #495e57;
-  padding: 4rem 1rem;
+  color: var(--primary-green);
+  padding: var(--space-lg) var(--space-md);
   text-align: center;
 }
 
-.book-table h2 {
+.Calendar h2 {
   font-size: 3rem;
-  margin-bottom: 2rem;
-  color: #495e57;
+  margin-bottom: var(--space-lg);
+  color: var(--primary-green);
   animation: fadeInDown 0.6s ease-out;
 }
 
-.book-table form {
+/* --- Formulario de reserva (BookingForm) --- */
+.bookatable {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  color: var(--primary-green)
+}
+form {
   max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-md);
   animation: fadeInUp 0.8s ease-in;
 }
 
-.book-table input,
-.book-table select {
-  width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  font-size: 1.2rem;
-  border: 2px solid #495e57;
-  border-radius: 12px;
-  background-color: #fdfdfd;
-  color: #495e57;
-  transition: all 0.3s ease;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.book-table input:focus,
-.book-table select:focus {
-  outline: none;
-  border-color: #F4CE14;
-  box-shadow: 0 0 5px #F4CE14aa;
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-green);
 }
 
-.input-icon {
+.input-group div {
   position: relative;
+  width: 100%;
 }
 
-.input-icon svg {
+.input-group svg {
   position: absolute;
   top: 50%;
   left: 1rem;
   transform: translateY(-50%);
-  color: #F4CE14;
+  color: var(--primary-yellow);
   font-size: 1.4rem;
   pointer-events: none;
 }
 
-.book-table button {
-  background-color: #F4CE14;
-  color: #495e57;
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--primary-green);
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  color: var(--primary-green);
+  transition: border var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 5px rgba(244, 206, 20, 0.67);
+}
+
+/* Errores de validación */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* Botón de envío */
+form button {
+  background-color: var(--primary-yellow);
+  color: var(--primary-green);
   font-weight: bold;
   font-size: 1.4rem;
   padding: 1rem;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  margin-top: var(--space-md);
 }
 
-.book-table button:hover {
+form button:hover {
   background-color: #e3be10;
   transform: scale(1.03);
 }
 
+/* --- BookingSlot --- */
+.booking-slots {
+  margin-top: var(--space-lg);
+}
+
+.booking-slots h3 {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+  color: var(--primary-green);
+}
+
+.booking-slots ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.booking-slots li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green);
+}
+
+/* --- Animaciones --- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -473,18 +600,18 @@ body {
   }
 }
 
+/* --- Responsive --- */
 @media (max-width: 600px) {
-  .book-table h2 {
+  .Calendar h2 {
     font-size: 2.4rem;
   }
 
-  .book-table input,
-  .book-table select,
-  .book-table button {
+  form button,
+  .input-group input,
+  .input-group select {
     font-size: 1rem;
   }
 }
-
 
 .footer {
   background-color: #495e57;
