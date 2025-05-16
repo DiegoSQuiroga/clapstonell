@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FaUser, FaEnvelope, FaCalendarAlt, FaClock, FaUsers } from 'react-icons/fa';
 
-const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
-  const [formData, setFormData] = useState({ name: '',email: '', date: '', time: '', guests: 1 });
+const BookingForm = ({ availableTimes, selectedDate, setSelectedDate, onReservation}) => {
+  const [formData, setFormData] = useState({ name: '',email: '', date: selectedDate.toISOString().split('T')[0], time: '', guests: 1 });
   const [errors, setErrors]= useState({});
 
   const validateEmail = (email) => {
@@ -19,8 +19,8 @@ const BookingForm = ({ availableTimes, dispatch, onReservation}) => {
     }
 
     if (name === 'date') {
-      dispatch({ type: 'UPDATE', date: value });
-      setFormData(prev => ({ ...prev, time: '' }));
+      setSelectedDate(new Date(value)); // actualiza la fecha en el padre
+      setFormData((prev) => ({ ...prev, time: '' })); // limpia el tiempo al cambiar fecha
     }
   };
 

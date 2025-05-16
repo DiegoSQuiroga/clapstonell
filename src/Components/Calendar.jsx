@@ -1,17 +1,18 @@
-import { useReducer } from 'react';
+import { useReducer, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import BookingSlot from './BookingSlot';
+import { fetchAPI, submitAPI } from './api.js';
 
-// Sample initial times
 const initializeTimes = () => {
-  return ['19:00', '20:00', '21:00', '22:00'];
+  return []; // inicializamos vacío y cargamos en useEffect
 };
 
 
 const updateTimes = (state, action) => {
   switch (action.type) {
-    case 'UPDATE':
-      return initializeTimes();
+    case 'SET_TIMES':
+      return action.payload;
     case 'REMOVE_TIME':
       return state.filter(time => time !== action.payload);
     default:
@@ -19,27 +20,49 @@ const updateTimes = (state, action) => {
   }
 };
 
+
 const Calendar = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
-  const handleReservation = (reservationData) => {
-    console.log('reserva recibida', reservationData);
-    dispatch({type: 'REMOVE_TIME', payload: reservationData.time});
-    alert(`Reservation confirmed ${reservationData.date} at ${reservationData.time}`);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchAPI(selectedDate).then((times) => {
+      dispatch({ type: 'SET_TIMES', payload: times });
+    });
+  }, [selectedDate]);
+
+  const handleReservation = async (reservationData) => {
+  const success = await submitAPI(reservationData);
+  if (success) {
+    // Paso 1: Leer reservas previas (o iniciar array vacío si no hay)
+    const previousReservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+    // Paso 2: Agregar la nueva reserva
+    const updatedReservations = [...previousReservations, reservationData];
+
+    // Paso 3: Guardar en localStorage
+    localStorage.setItem('reservations', JSON.stringify(updatedReservations));
+
+    // Paso 4: Actualizar estado y redireccionar
+    dispatch({ type: 'REMOVE_TIME', payload: reservationData.time });
+    navigate('/confirmed');
+  } else {
+    alert('Failed to submit reservation.');
+  }
   };
 
-  return (
+return (
     <div className='Calendar'>
       <BookingForm
         availableTimes={availableTimes}
-        dispatch={dispatch}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
         onReservation={handleReservation}
       />
-      <BookingSlot
-        availableTimes={availableTimes}
-      />
+      <BookingSlot availableTimes={availableTimes} />
     </div>
   );
 };
-
 
 export default Calendar;

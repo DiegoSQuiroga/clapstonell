@@ -6,19 +6,33 @@ import Specials from './Components/Specials';
 import Testimonials from './Components/Testimonials';
 import Calendar from './Components/Calendar';
 import Footer from './Components/Footer';
+import ConfirmedBooking from './Components/ConfirmedBooking';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
-    <div className="container">
-      <Navbar/>
-      <HeroSection/>
-      <Specials/>
-      <Testimonials/>
-      <Calendar/>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroSection />
+                <Specials />
+                <Testimonials />
+                <Calendar />
+              </>
+            }
+          />
+          <Route path="/confirmed" element={<ConfirmedBooking />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
