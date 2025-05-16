@@ -95,11 +95,13 @@ body {
 .nav-links a:focus {
   background-color: var(--primary-yellow);
   color: var(--dark-text);
+  border-radius: 16px;
 }
 
 .nav-links a.active {
   background-color: var(--highlight);
   color: var(--light-text);
+  border-radius: 16px;
 }
 
 /* Hamburguesa */
