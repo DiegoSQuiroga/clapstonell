@@ -53,12 +53,13 @@ const BookingForm = ({ availableTimes, selectedDate, setSelectedDate, onReservat
       {/* Name*/}
       <div className="bookatable">Reservations</div>
       <div className="input-group">
-        <label>Full Name</label>
+        <label htmlFor="res-name">Full Name</label>
         <div>
           <FaUser />
           <input
             type="text"
             name="name"
+            id="res-name"
             value={formData.name}
             onChange={handleChange}
             aria-invalid={!!errors.name}
@@ -69,12 +70,13 @@ const BookingForm = ({ availableTimes, selectedDate, setSelectedDate, onReservat
 
       {/* Email */}
       <div className="input-group">
-        <label>Email</label>
+        <label htmlFor="res-email">Email</label>
         <div>
           <FaEnvelope />
           <input
             type="email"
             name="email"
+            id='res-email'
             value={formData.email}
             onChange={handleChange}
             aria-invalid={!!errors.email}
@@ -85,12 +87,13 @@ const BookingForm = ({ availableTimes, selectedDate, setSelectedDate, onReservat
 
       {/* date */}
       <div className="input-group">
-        <label>Date</label>
+        <label htmlFor="res-date">Date</label>
         <div>
           <FaCalendarAlt />
           <input
             type="date"
             name="date"
+            id='res-date'
             value={formData.date}
             onChange={handleChange}
             min={new Date().toISOString().split('T')[0]}
@@ -102,11 +105,12 @@ const BookingForm = ({ availableTimes, selectedDate, setSelectedDate, onReservat
 
       {/* time (only available with selected date) */}
       <div className="input-group">
-        <label>Time</label>
+        <label htmlFor="time">Time</label>
         <div>
           <FaClock />
           <select
             name="time"
+            id="time"
             value={formData.time}
             onChange={handleChange}
             disabled={!formData.date}

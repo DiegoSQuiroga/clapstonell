@@ -16,6 +16,7 @@ function App() {
     <Router>
       <div className="container">
         <Navbar />
+        <main>
         <Routes>
           <Route
             path="/"
@@ -30,6 +31,7 @@ function App() {
           />
           <Route path="/confirmed" element={<ConfirmedBooking />} />
         </Routes>
+        </main>
         <Footer />
       </div>
     </Router>

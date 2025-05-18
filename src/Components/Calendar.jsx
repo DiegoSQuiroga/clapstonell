@@ -4,12 +4,12 @@ import BookingForm from './BookingForm';
 import BookingSlot from './BookingSlot';
 import { fetchAPI, submitAPI } from './api.js';
 
-const initializeTimes = () => {
+export const initializeTimes = () => {
   return []; // inicializamos vacío y cargamos en useEffect
 };
 
 
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
   switch (action.type) {
     case 'SET_TIMES':
       return action.payload;
