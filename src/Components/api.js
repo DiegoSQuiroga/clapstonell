@@ -17,10 +17,9 @@ export const fetchAPI = function (date) {
         if (random() < 0.5) {
           result.push(i + ':00');
         }
-        // No agregamos los horarios con ':30'
       }
       resolve(result);
-    }, 500); // Simula retardo de 500ms
+    }, 500);
   });
 };
 
@@ -28,6 +27,6 @@ export const submitAPI = function (formData) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 300); // Simula retardo en el submit
+    }, 300);
   });
 };

@@ -3,18 +3,16 @@ import logo from '../assets/images/Untitled.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('#home'); // Estado para el link activo
+  const [activeLink, setActiveLink] = useState('');
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLinkClick = (hash) => {
     setActiveLink(hash);
     setIsOpen(false);
-    // Opcional: Scroll suave al hacer clic
     document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Lista de links para evitar repetición
   const links = [
     { hash: '#home', label: 'Home' },
     { hash: '#about', label: 'About' },

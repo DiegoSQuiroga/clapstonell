@@ -5,7 +5,7 @@ import BookingSlot from './BookingSlot';
 import { fetchAPI, submitAPI } from './api.js';
 
 export const initializeTimes = () => {
-  return []; // inicializamos vacío y cargamos en useEffect
+  return [];
 };
 
 
@@ -35,16 +35,16 @@ const Calendar = () => {
   const handleReservation = async (reservationData) => {
   const success = await submitAPI(reservationData);
   if (success) {
-    // Paso 1: Leer reservas previas (o iniciar array vacío si no hay)
+    //lee reservas previas (o iniciar array vacío si no hay)
     const previousReservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
-    // Paso 2: Agregar la nueva reserva
+    //agrega la nueva reserva
     const updatedReservations = [...previousReservations, reservationData];
 
-    // Paso 3: Guardar en localStorage
+    //guarda en localStorage
     localStorage.setItem('reservations', JSON.stringify(updatedReservations));
 
-    // Paso 4: Actualizar estado y redireccionar
+    //actualiza estado y redirecciona
     dispatch({ type: 'REMOVE_TIME', payload: reservationData.time });
     navigate('/confirmed');
   } else {

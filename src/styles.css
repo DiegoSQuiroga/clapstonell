@@ -3,26 +3,22 @@
 
 /* ===== VARIABLES GLOBALES ===== */
 :root {
-  /* Colores principales */
   --primary-green: #495e57;
   --primary-yellow: #F4CE14;
   --light-text: #EDEFEE;
   --dark-text: #333333;
-  --highlight: #F4CE14; /* Para el fondo del link activo */
-  
-  /* Espaciados */
+  --highlight: #F4CE14;
+
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 2rem;
 
-  /* Transiciones */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
 
-/* Estilo general */
 body {
-  margin: 10px;
+  margin: 0px;
   font-family: 'Markazi Text', serif;
   font-weight: 500;
   background-color: #f4f4f4;
@@ -30,11 +26,6 @@ body {
   line-height: 1.5;
 }
 
-/* Contenedor centralizado */
-.container {
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 @media (max-width: 768px) {
     .container {
@@ -90,7 +81,6 @@ body {
   transition: var(--transition-normal);
 }
 
-/* Estados de los links */
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: var(--primary-yellow);
@@ -104,7 +94,6 @@ body {
   border-radius: 16px;
 }
 
-/* Hamburguesa */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -128,7 +117,6 @@ body {
   transition: var(--transition-normal);
 }
 
-/* Animación de "X" */
 .hamburger.active .bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -174,59 +162,57 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  display: flex; /* Usa Flexbox para alinear texto e imagen en fila */
-  align-items: center; /* Centra verticalmente el contenido */
-  justify-content: space-around; /* Deja espacio entre texto e imagen */
-  background-color: var(--primary-green); /* Fondo oscuro del contenedor */
-  color: var(--light-text); /* Texto blanco por defecto */
-  position: relative; /* Permite posicionar elementos hijos (como la imagen) con respecto a este */
-  overflow: visible; /* Permite que la imagen sobresalga del contenedor */
-  gap: var(--space-lg); /* Espacio entre texto e imagen */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--primary-green);
+  color: var(--light-text);
+  position: relative;
+  overflow: visible;
+  gap: var(--space-lg);
   flex-wrap: nowrap;
-  padding-bottom: var(--space-md); /* Ajustamos el padding en la parte inferior */
+  padding-bottom: var(--space-md);
   font-family: 'Markazi Text', serif;
-  /* Podés ajustar padding si querés que ocupe menos espacio vertical */
 }
 
 .hero-text {
   flex: 1;
-  max-width: 50%; /* Ocupa la mitad izquierda del contenedor */
+  max-width: 50%;
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
-  /* Se mantiene el tamaño del texto controlado por las variables globales */
 }
 
 .hero-text h1 {
-  font-size: 3rem; /* Título grande */
-  color: var(--primary-yellow); /* Amarillo destacado */
-  margin-bottom: var(--space-sm); /* Espaciado inferior */
-  /* Cambié el tamaño del título a 3rem */
+  font-size: 3rem;
+  color: var(--primary-yellow);
+  margin-bottom: var(--space-sm);
 }
 
 .hero-text h2 {
-  font-size: 2rem; /* Subtítulo */
-  margin-bottom: var(--space-md); /* Un poco más de espacio debajo */
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
 }
 
 .hero-text p {
-  font-size: 1.2rem; /* Texto base */
-  line-height: 1.6; /* Altura de línea para mejorar legibilidad */
+  font-size: 1.2rem;
+  line-height: 1.6;
   text-align: justify;
 }
 
 .hero-text button {
-  margin-top: var(--space-lg); /* Espacio arriba del botón */
-  padding: var(--space-sm) var(--space-lg); /* Espaciado interno del botón */
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  margin-bottom: var(--space-md);
   font-size: 1rem;
-  background-color: var(--primary-yellow); /* Fondo amarillo del botón */
-  color: var(--primary-green); /* Texto del botón en color oscuro */
+  background-color: var(--primary-yellow);
+  color: var(--primary-green);
   border: none;
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 16px;
   cursor: pointer;
   font-weight: bold;
   transition: var(--transition-normal);
-  /* Agregué un poco de interactividad */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.963);
 }
 
 .hero-text button:hover {
@@ -296,11 +282,13 @@ body {
   color: #fff;
   padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 16px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
   transition: background-color var(--transition-normal);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.963);
+
 }
 
 .specials-header button:hover {

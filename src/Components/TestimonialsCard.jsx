@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TestimonialsCard = ({ name, rating, comment }) => {
   return (
     <div className="testimonial-card">
