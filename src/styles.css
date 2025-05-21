@@ -216,31 +216,31 @@ body {
 }
 
 .hero-text button:hover {
-  background-color: #e6bc10; /* Oscurece el amarillo al pasar el mouse */
-  transform: scale(1.05); /* Efecto leve de agrandado */
+  background-color: #e6bc10;
+  transform: scale(1.05);
 }
 
 .hero-image {
   max-width: 250px;
   position: relative;
-  top: 50px; /* Desplaza la imagen hacia abajo para que sobresalga */
+  top: 50px;
   margin-left: -200px;
-  /* Ajusté margen negativo para que sobresalga */
+
 }
 
 .hero-image img {
-  width: 100%; /* Imagen ocupa todo el ancho disponible */
-  border-radius: 16px; /* Bordes redondeados en la imagen */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra para profundidad */
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   margin-left: -50px;
 }
 
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column; /* Cambia de fila a columna */
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: var(--space-lg) var(--space-sm); /* Añadí padding con las variables globales */
+    padding: var(--space-lg) var(--space-sm);
     position: relative;
     z-index: 1;
   }
@@ -251,8 +251,8 @@ body {
 
   .hero-image {
     max-width: 70%;
-    margin: var(--space-md) 0 0 0; /* Quita margen negativo y da más espacio */
-    top: 0; /* Evita que se desplace hacia abajo */
+    margin: var(--space-md) 0 0 0;
+    top: 0;
     margin-left: 0;
   }
 }
@@ -308,7 +308,7 @@ body {
   }
 }
 
-/* Card styles */
+
 .card {
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -393,7 +393,7 @@ body {
   margin-bottom: var(--space-lg);
 }
 
-/* Slider dívisor: ajusta el contenedor interno si usas react-slick */
+
 .testimonials .slick-slider {
   padding: 0 var(--space-md);
 }
@@ -437,6 +437,7 @@ body {
     font-size: 2rem;
   }
 }
+
 /* === ESTILOS GLOBALES DE CALENDARIO, FORMULARIO Y TURNOS === */
 
 /* --- Calendar container --- */
